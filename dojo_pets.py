@@ -22,7 +22,6 @@ class Ninja:
         Pet.noise(self.pet, self.pet.name)
         return self
 
-
 class Pet:
     def __init__(self, name, type, tricks, health, energy, noise):
         self.name = name 
@@ -54,7 +53,24 @@ class Pet:
         print(f"You give {pet_name} a bath and she says *{self.pet_noise}* to that.")
         return self
 
-badge = Pet("Badge", "Cat", "Yell", 100, 50, "ROAR!")
+
+class Cat(Pet):
+    def __init__(self, name, type, tricks, health, energy, noise, perching_spot):
+        super().__init__(name, type, tricks, health, energy, noise)            ###### SUPER DOESN'T GET INIT SELF
+        self.perch = perching_spot
+class Dog(Pet):
+    def __init__(self, name, type, tricks, health, energy, noise, bone_location):
+        super().__init__(name, type, tricks, health, energy, noise)
+        self.bone = bone_location
+
+badge = Cat("Badge", "Cat", "Yell", 100, 50, "ROAR!", "in the Closet")
+lucy = Dog("Lucy", "Dog", "Scratch", 50, 200, "YIP", "in the Couch Cushion")
+
 todd = Ninja("Todd", "Aulwurm", 100, 5, badge)
+
+
 todd.feed("food").walk().bathe().feed("treat")
 badge.sleep()
+
+print(f"{badge.name}'s perch is {badge.perch}")
+print(f"{lucy.name}'s bone is {lucy.bone}")
